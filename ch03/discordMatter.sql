@@ -78,8 +78,13 @@ where (emp_no between 10001 and 10012) and first_name like 'P%';
 select * from employees_copy
 where first_name = 'Aleksandar' and (birth_date >= 19500101 and birth_date < 19600101);
 
--- 12. 
-
+-- 12. employees DB의 salaries 테이블에 bonus 컬럼을 추가하고, 근무기간이 2000-01-01 ~ 9999-01-01 인 직원들의 보너스를 각 직원 월급의 40%로 수정하시오.
+-- ( + bonus 컬럼의 DEFAULT 값은 '해당 없음' 입니다.)
+select * from employees_copy;
+alter table employees_copy add bonus int default '해당 없음';
+update employees_copy
+set bonus = bounus * 1.4
+where hire_date between 20000101 and 99990101;
 
 -- 13. 
 
