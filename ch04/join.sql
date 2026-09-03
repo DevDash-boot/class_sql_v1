@@ -94,10 +94,11 @@ left join tb_club c
 on s.club_id = c.club_id;
 
 -- 연습문제 1. INNER JOIN - 등급이 'A' 또는 'B'인 학생 조회
-select * from tb_student s
+select s.name, s.age, s.grade, g.score 
+from tb_student s
 inner join tb_grade g
 on s.grade = g.grade
-where s.grade = 'A' or s.grade = 'B';
+where s.grade IN ('A', 'B');
 
 -- 연습문제 2. LEFT JOIN - 모든 남학생의 이름, 등급, 점수를 조회
 -- 등급이 없는 학생도 표시
