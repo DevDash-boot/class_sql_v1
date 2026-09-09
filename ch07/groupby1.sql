@@ -39,7 +39,7 @@ group by class
 having avg(score) >=80;
 
 -- 3. 클래스별 최고 및 최저 점수
-select class, max(score) as 최고점수, min(score) as 최저점수
+select class, salariesmax(score) as 최고점수, min(score) as 최저점수
 from tb_student
 group by class;
 
