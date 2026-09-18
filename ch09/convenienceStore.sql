@@ -8,7 +8,7 @@ CREATE TABLE product (
     product_name VARCHAR(100) NOT NULL,
     price INT NOT NULL,
     barcode VARCHAR(50) NOT NULL UNIQUE,
-    expiration_date DATE,
+    expiration_date DATE NOT NULL,
     stock INT NOT NULL DEFAULT 0,
     category VARCHAR(50) NOT NULL,
     status BOOLEAN NOT NULL DEFAULT TRUE
@@ -105,12 +105,12 @@ VALUES
 -- 발주 / 입고
 INSERT INTO purchase(product_id, quantity, unit_price, total_price)
 VALUES
-(8, 20, 1000, 20000),
-(6, 10, 2500, 25000),
-(4, 20, 1200, 144000),
-(3, 30, 500, 15000),
-(1, 20, 1000, 20000),
-(10, 20, 1500, 30000);
+    (8, 20, 1500, 30000),
+    (6, 10, 3500, 35000),
+    (4, 20, 1800, 216000),
+    (3, 30, 1000, 30000),
+    (1, 20, 1500, 30000),
+    (10, 20, 2200, 44000);
 
 select * from order_item;
 select * from orders;
@@ -133,3 +133,7 @@ VALUES ('1호점', 000000, 235959, '010-1111-1111', '부산진구'),
  ('3호점', 000000, 235959, '010-3333-3333', '사상구'),
  ('4호점', 090000, 220000, '010-4444-4444', '해운대구'),
  ('5호점', 060000, 233000, '010-5555-5555', '남구');
+
+CREATE USER 'root'@'192.168.5.101' IDENTIFIED BY 'root';
+GRANT ALL PRIVILEGES ON convenience_store.* TO 'root'@'192.168.5.%';
+FLUSH PRIVILEGES;
